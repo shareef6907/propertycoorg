@@ -3,14 +3,14 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-// Using Unsplash placeholders for now
+// Local gallery images
 const images = [
-    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1501854140884-074bf86ee91c?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=1000&auto=format&fit=crop",
+    "/gallery/1.jpeg",
+    "/gallery/2.jpeg",
+    "/gallery/3.jpeg",
+    "/gallery/4.jpeg",
+    "/gallery/5.jpeg",
+    "/gallery/6.jpeg",
 ];
 
 export default function Gallery() {

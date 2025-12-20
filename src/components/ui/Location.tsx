@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Navigation, Car, Building } from "lucide-react";
+import { MapPin, Navigation, Car, Building, Plane } from "lucide-react";
 
 const landmarks = [
     { name: "Napokulu Stadium", distance: "< 50m", icon: Building },
@@ -9,6 +9,8 @@ const landmarks = [
     { name: "Women's University", distance: "< 50m", icon: Building },
     { name: "Darga Shareef", distance: "Opposite (< 50m)", icon: MapPin },
     { name: "Madikeri Town", distance: "15 mins", icon: Car },
+    { name: "Kannur Airport", distance: "3 hours", icon: Plane },
+    { name: "Mangalore Airport", distance: "4 hours", icon: Plane },
 ];
 
 export default function Location() {
