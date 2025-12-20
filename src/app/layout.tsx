@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     canonical: "https://propertycoorg.com",
   },
   verification: {
-    google: "google-site-verification-code", // You'll need to add your actual verification code from Google Search Console
+    google: "afrFRMVd-BPpNiGfZ8Cuyk000fEuofxRIbcpfuXU9LY",
   },
 };
 
