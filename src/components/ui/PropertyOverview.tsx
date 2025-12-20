@@ -27,8 +27,8 @@ const stats = [
     },
     {
         label: "Land Type",
-        value: "Converted",
-        unit: "Commercial",
+        value: "Convertible",
+        unit: "to Commercial",
         icon: Trees,
         delay: 0.4,
     },

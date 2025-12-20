@@ -38,7 +38,7 @@ export default function Hero() {
 
                     <h1 className="text-5xl md:text-7xl font-serif font-bold leading-tight mb-6">
                         Property for Sale in Coorg <br />
-                        <span className="text-accent">Premium 3.86-Acre Investment Land</span>
+                        <span className="text-black/80">Premium 3.86-Acre Investment Land</span>
                     </h1>
 
                     <p className="text-xl md:text-2xl text-white/90 mb-10 font-light max-w-2xl">
@@ -50,7 +50,7 @@ export default function Hero() {
                             href="tel:+97333007030"
                             className="bg-accent hover:bg-accent-light text-primary-dark font-bold py-4 px-8 text-lg transition-all duration-300 flex items-center justify-center gap-2"
                         >
-                            Call Owner Now
+                            Call Now
                             <Phone className="w-5 h-5" />
                         </a>
                         <Link
