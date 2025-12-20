@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 
 export default function Hero() {
@@ -46,13 +46,13 @@ export default function Hero() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <Link
-                            href="#contact"
+                        <a
+                            href="tel:+97333007030"
                             className="bg-accent hover:bg-accent-light text-primary-dark font-bold py-4 px-8 text-lg transition-all duration-300 flex items-center justify-center gap-2"
                         >
-                            Schedule Site Visit
-                            <ArrowRight className="w-5 h-5" />
-                        </Link>
+                            Call Owner Now
+                            <Phone className="w-5 h-5" />
+                        </a>
                         <Link
                             href="#location"
                             className="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold py-4 px-8 text-lg transition-all duration-300 flex items-center justify-center"

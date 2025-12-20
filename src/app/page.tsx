@@ -8,6 +8,7 @@ import IdealUses from "@/components/ui/IdealUses";
 import Disclosure from "@/components/ui/Disclosure";
 import Gallery from "@/components/ui/Gallery";
 import Contact from "@/components/ui/Contact";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Gallery />
       <Contact />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 }
