@@ -17,6 +17,9 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Property for Sale in Coorg | Resort & Investment Land Near Madikeri",
   description: "Premium 3.86-acre property for sale in Coorg near Madikeri. Ideal for resort, wedding venue & Kodagu investment. Fixed price. Serious investors only.",
+  icons: {
+    icon: "/favicon.png",
+  },
   openGraph: {
     title: "Property for Sale in Coorg | Resort & Investment Land Near Madikeri",
     description: "Premium 3.86-acre property for sale in Coorg near Madikeri. Ideal for resort, wedding venue & Kodagu investment.",
