@@ -43,14 +43,13 @@ export default function PropertyOverview() {
                     <div>
                         <span className="text-accent font-bold tracking-wider uppercase mb-2 block">Property Overview</span>
                         <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-6">
-                            A Rare Opportunity in <br />
-                            <span className="italic text-primary-light">God&apos;s Own Country</span>
+                            A Rare Coorg Investment Opportunity
                         </h2>
                         <p className="text-text-muted text-lg leading-relaxed mb-8">
-                            Discover a pristine 3.86-acre parcel of land situated in the serene landscapes of Napokulu, Coorg. This property offers a unique blend of accessibility and seclusion, making it the perfect canvas for a luxury resort, boutique hotel, or a private estate.
+                            This 3.86-acre contiguous land parcel in Coorg offers a rare opportunity for investors and developers seeking large, strategically located property near Madikeri. Situated in Cheriye Paramb, Napokulu (Kodagu district), this land combines scale, accessibility, and development potential—qualities that are increasingly difficult to find in Coorg today.
                         </p>
                         <p className="text-text-muted text-lg leading-relaxed mb-8">
-                            With clear titles, conversion status, and strategic proximity to major tourist attractions, this land represents not just real estate, but a legacy investment in one of India&apos;s most sought-after destinations.
+                            Ideal for resort development, destination wedding venues, hospitality projects, institutional use, or landmark commercial developments, this property is offered as a premium, long-term investment, not a distress sale.
                         </p>
                     </div>
 

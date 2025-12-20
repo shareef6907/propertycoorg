@@ -1,28 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TrendingUp, ShieldCheck, Hotel, Landmark } from "lucide-react";
+import { TrendingUp, ShieldCheck, Hotel, Landmark, MapPin } from "lucide-react";
 
 const highlights = [
     {
-        title: "High Appreciation",
-        description: "Coorg real estate has seen consistent double-digit growth over the last 5 years.",
+        title: "Rare Large Parcel",
+        description: "Large contiguous land parcels near Madikeri are increasingly rare, making this a unique find.",
+        icon: Landmark,
+    },
+    {
+        title: "Strategic Location",
+        description: "Surrounding infrastructure ensures consistent relevance, footfall, and long-term appreciation.",
+        icon: MapPin,
+    },
+    {
+        title: "High Revenue Potential",
+        description: "Suitable for high-revenue resort and wedding-based business models in a tourism hub.",
         icon: TrendingUp,
     },
     {
-        title: "Clear Titles",
-        description: "Single owner property with all legal documentation in place for immediate transfer.",
+        title: "Future Ready",
+        description: "Infrastructure planning significantly enhances post-development value for visionary investors.",
         icon: ShieldCheck,
-    },
-    {
-        title: "Tourism Hub",
-        description: "Located in a high-demand tourist zone, perfect for hospitality ventures.",
-        icon: Hotel,
-    },
-    {
-        title: "Legacy Asset",
-        description: "A rare large parcel of land suitable for creating a generational family estate.",
-        icon: Landmark,
     },
 ];
 

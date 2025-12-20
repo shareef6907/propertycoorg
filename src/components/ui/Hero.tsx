@@ -37,12 +37,12 @@ export default function Hero() {
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-serif font-bold leading-tight mb-6">
-                        Premium Investment Land <br />
-                        <span className="text-accent">in the Heart of Coorg</span>
+                        Property for Sale in Coorg <br />
+                        <span className="text-accent">Premium 3.86-Acre Investment Land</span>
                     </h1>
 
                     <p className="text-xl md:text-2xl text-white/90 mb-10 font-light max-w-2xl">
-                        3.86 Acres of pristine landscape near Madikeri. Ideal for luxury resorts, wedding venues, or legacy investment.
+                        Prime Coorg Land for Resort, Wedding Venue & Large-Scale Development | Napokulu, Kodagu
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4">

@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { MapPin, Navigation, Car, Building } from "lucide-react";
 
 const landmarks = [
-    { name: "Napokulu Stadium", distance: "1.2 km", icon: Building },
-    { name: "Wedding Hall", distance: "0.8 km", icon: Building },
-    { name: "Women's University", distance: "2.5 km", icon: Building },
-    { name: "Darga Shareef", distance: "1.5 km", icon: MapPin },
-    { name: "Madikeri Town", distance: "22 km", icon: Car },
+    { name: "Napokulu Stadium", distance: "< 50m", icon: Building },
+    { name: "Wedding Hall", distance: "Adjacent (1m)", icon: Building },
+    { name: "Women's University", distance: "< 50m", icon: Building },
+    { name: "Darga Shareef", distance: "Opposite (< 50m)", icon: MapPin },
+    { name: "Madikeri Town", distance: "15 mins", icon: Car },
 ];
 
 export default function Location() {
@@ -39,7 +39,7 @@ export default function Location() {
                         {/* Overlay CTA */}
                         <div className="absolute bottom-6 left-6 z-10">
                             <a
-                                href="https://maps.app.goo.gl/UsAJPddGRoKhP7bq6"
+                                href="https://maps.app.goo.gl/1fxqkS8z6JLTdTvG6"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="bg-white text-primary font-bold py-3 px-6 shadow-lg flex items-center gap-2 hover:bg-primary hover:text-white transition-colors"

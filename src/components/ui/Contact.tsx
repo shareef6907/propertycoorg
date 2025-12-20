@@ -15,10 +15,15 @@ export default function Contact() {
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>();
 
     const onSubmit = async (data: FormData) => {
-        // Simulate API call
-        console.log(data);
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        alert("Thank you for your interest. We will contact you shortly.");
+        const message = `*New Inquiry from Website*
+Name: ${data.name}
+Phone: ${data.phone}
+Email: ${data.email}
+Intent: ${data.intent}
+Message: ${data.message}`;
+
+        const whatsappUrl = `https://wa.me/97333007030?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
     };
 
     return (
@@ -36,33 +41,23 @@ export default function Contact() {
                         </p>
 
                         <div className="space-y-6">
-                            <a href="tel:+919876543210" className="flex items-center gap-4 p-6 bg-white shadow-sm border border-primary/5 hover:border-accent/50 transition-colors group">
+                            <a href="tel:+97333007030" className="flex items-center gap-4 p-6 bg-white shadow-sm border border-primary/5 hover:border-accent/50 transition-colors group">
                                 <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                                     <Phone className="w-6 h-6" />
                                 </div>
                                 <div>
                                     <p className="text-sm text-text-muted uppercase tracking-wide font-semibold">Call Us</p>
-                                    <p className="text-xl font-bold text-primary">+91 98765 43210</p>
+                                    <p className="text-xl font-bold text-primary">+973 3300 7030</p>
                                 </div>
                             </a>
 
-                            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-6 bg-white shadow-sm border border-primary/5 hover:border-accent/50 transition-colors group">
+                            <a href="https://wa.me/97333007030" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-6 bg-white shadow-sm border border-primary/5 hover:border-accent/50 transition-colors group">
                                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors">
                                     <MessageCircle className="w-6 h-6" />
                                 </div>
                                 <div>
                                     <p className="text-sm text-text-muted uppercase tracking-wide font-semibold">WhatsApp</p>
                                     <p className="text-xl font-bold text-primary">Chat on WhatsApp</p>
-                                </div>
-                            </a>
-
-                            <a href="mailto:contact@propertycoorg.com" className="flex items-center gap-4 p-6 bg-white shadow-sm border border-primary/5 hover:border-accent/50 transition-colors group">
-                                <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                                    <Mail className="w-6 h-6" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-text-muted uppercase tracking-wide font-semibold">Email Us</p>
-                                    <p className="text-xl font-bold text-primary">contact@propertycoorg.com</p>
                                 </div>
                             </a>
                         </div>

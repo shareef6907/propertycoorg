@@ -33,15 +33,14 @@ export default function Footer() {
                         <ul className="space-y-4">
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-5 h-5 text-accent mt-1" />
-                                <span className="text-white/80">Napokulu, Kodagu District,<br />Karnataka, India</span>
+                                <span className="text-white/80">Cheriye Paramb, Napokulu,<br />Kodagu District, Karnataka</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Phone className="w-5 h-5 text-accent" />
-                                <a href="tel:+919876543210" className="text-white/80 hover:text-white transition-colors">+91 98765 43210</a>
+                                <a href="tel:+97333007030" className="text-white/80 hover:text-white transition-colors">+973 3300 7030</a>
                             </li>
                             <li className="flex items-center gap-3">
-                                <Mail className="w-5 h-5 text-accent" />
-                                <a href="mailto:contact@propertycoorg.com" className="text-white/80 hover:text-white transition-colors">contact@propertycoorg.com</a>
+                                <span className="text-white/60 text-sm italic">Single Owner (Settled in Bahrain)</span>
                             </li>
                         </ul>
                     </div>
