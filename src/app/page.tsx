@@ -9,10 +9,12 @@ import Disclosure from "@/components/ui/Disclosure";
 import Gallery from "@/components/ui/Gallery";
 import Contact from "@/components/ui/Contact";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import StructuredData from "@/components/StructuredData";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <StructuredData />
       <Navbar />
       <Hero />
       <PropertyOverview />
