@@ -7,7 +7,6 @@ const landmarks = [
     { name: "General Thimmaiah Stadium", distance: "< 50m", icon: Building },
     { name: "Wedding Hall", distance: "Adjacent (1m)", icon: Building },
     { name: "Women's University", distance: "< 50m", icon: Building },
-    { name: "Darga Shareef", distance: "Opposite (< 50m)", icon: MapPin },
     { name: "Madikeri Town", distance: "15 mins", icon: Car },
     { name: "Kannur Airport", distance: "3 hours", icon: Plane },
     { name: "Mangalore Airport", distance: "4 hours", icon: Plane },
