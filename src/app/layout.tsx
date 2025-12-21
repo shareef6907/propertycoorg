@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     canonical: "https://propertycoorg.com",
   },
   verification: {
-    google: "afrFRMVd-BPpNiGfZ8Cuyk000fEuofxRIbcpfuXU9LY",
+    google: "z35UxX2EqHUz_ZwF3_TkEnyhJrhgh3cP5S0_NsrYh1M",
   },
 };
 
