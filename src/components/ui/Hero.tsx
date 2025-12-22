@@ -1,15 +1,27 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 
 export default function Hero() {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.play().catch(error => {
+                console.log("Video autoplay failed:", error);
+            });
+        }
+    }, []);
+
     return (
         <section className="relative h-[100dvh] w-full overflow-hidden">
             {/* Video Background */}
             <div className="absolute inset-0 w-full h-full bg-black">
                 <video
+                    ref={videoRef}
                     autoPlay
                     loop
                     muted
