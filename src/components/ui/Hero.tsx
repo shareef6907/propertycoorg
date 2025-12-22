@@ -9,11 +9,24 @@ export default function Hero() {
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.play().catch(error => {
-                console.log("Video autoplay failed:", error);
-            });
-        }
+        const playVideo = () => {
+            if (videoRef.current) {
+                videoRef.current.play().catch(error => {
+                    console.log("Video autoplay failed:", error);
+                });
+            }
+        };
+
+        playVideo();
+
+        // Fallback: Try to play on first user interaction if autoplay was blocked
+        window.addEventListener("touchstart", playVideo, { once: true });
+        window.addEventListener("click", playVideo, { once: true });
+
+        return () => {
+            window.removeEventListener("touchstart", playVideo);
+            window.removeEventListener("click", playVideo);
+        };
     }, []);
 
     return (
@@ -27,6 +40,9 @@ export default function Hero() {
                     muted
                     playsInline
                     preload="auto"
+                    onCanPlay={() => {
+                        if (videoRef.current) videoRef.current.play();
+                    }}
                     className="object-cover w-full h-full"
                 >
                     <source src="/videos/hero-video.mp4" type="video/mp4" />
