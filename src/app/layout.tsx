@@ -97,14 +97,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        <link
-          rel="preload"
-          href="/videos/hero-video.mp4"
-          as="video"
-          type="video/mp4"
-          // @ts-ignore
-          fetchPriority="high"
-        />
+        <link rel="preload" href="/videos/hero-video.mp4" as="video" type="video/mp4" />
       </head>
       <body className="antialiased bg-cream text-text-dark">
         {children}
