@@ -34,7 +34,7 @@ export default function Hero() {
                 >
                     <div className="flex items-center gap-2 mb-6 text-accent font-medium tracking-wider uppercase">
                         <MapPin className="w-5 h-5" />
-                        <span>Napokulu, Kodagu District</span>
+                        <span>Napokulu, Coorg, Karnataka, India</span>
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-serif font-bold leading-tight mb-6">

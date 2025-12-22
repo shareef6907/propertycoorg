@@ -16,9 +16,13 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://propertycoorg.com'),
-  title: "Property for Sale in Coorg | 3.86 Acre Resort Land Near Madikeri | Napokulu",
-  description: "Premium 3.86-acre land for sale in Coorg, Napokulu. Ideal for resort development, wedding venue & commercial investment. Near Madikeri. Convertible to commercial. ₹8 Crores. Contact: +973 3300 7030",
+  title: "Property for Sale in Coorg, India | 3.86 Acre Resort Land Near Madikeri",
+  description: "Premium 3.86-acre land for sale in Coorg, Karnataka, India. Ideal for resort development, wedding venue & commercial investment. Near Madikeri. Convertible to commercial. ₹8 Crores. Contact: +973 3300 7030",
   keywords: [
+    "property for sale in india",
+    "land for sale in india",
+    "investment property india",
+    "resort land for sale in india",
     "property for sale in coorg",
     "land for sale in coorg",
     "resort land for sale in coorg",

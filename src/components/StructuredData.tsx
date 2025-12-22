@@ -4,8 +4,8 @@ export default function StructuredData() {
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "RealEstateListing",
-        "name": "3.86 Acre Property for Sale in Coorg, Napokulu",
-        "description": "Premium 3.86-acre land for sale in Coorg, Napokulu. Ideal for resort development, wedding venue & commercial investment. Near Madikeri. Convertible to commercial.",
+        "name": "3.86 Acre Property for Sale in Coorg, Karnataka, India",
+        "description": "Premium 3.86-acre land for sale in Coorg, Karnataka, India. Ideal for resort development, wedding venue & commercial investment. Near Madikeri. Convertible to commercial.",
         "url": "https://propertycoorg.com",
         "image": [
             "https://propertycoorg.com/gallery/1.jpeg",
