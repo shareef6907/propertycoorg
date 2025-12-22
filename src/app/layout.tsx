@@ -96,7 +96,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        <link rel="preload" href="/videos/hero-video.mp4" as="video" type="video/mp4" crossOrigin="anonymous" />
+        <link rel="preload" href="/videos/hero-video.mp4" as="video" type="video/mp4" />
 
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11385612335"></script>

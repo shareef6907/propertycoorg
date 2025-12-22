@@ -8,15 +8,14 @@ export default function Hero() {
     return (
         <section className="relative h-screen w-full overflow-hidden">
             {/* Video Background */}
-            <div className="absolute inset-0 w-full h-full bg-primary-dark">
+            <div className="absolute inset-0 w-full h-full bg-black">
                 <video
                     autoPlay
                     loop
                     muted
                     playsInline
                     preload="auto"
-                    className="object-cover w-full h-full transition-opacity duration-1000"
-                    poster="/gallery/6.jpeg"
+                    className="object-cover w-full h-full"
                 >
                     <source src="/videos/hero-video.mp4" type="video/mp4" />
                 </video>
