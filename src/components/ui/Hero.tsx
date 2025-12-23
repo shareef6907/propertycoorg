@@ -3,86 +3,75 @@
 import { motion } from "framer-motion";
 import { MapPin, Phone } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 export default function Hero() {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!containerRef.current) return;
+
+        // Create video element manually to bypass React hydration issues
+        const video = document.createElement('video');
+
+        // Set all necessary attributes for mobile autoplay
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+        video.setAttribute('webkit-playsinline', '');
+        video.setAttribute('preload', 'auto');
+
+        const source = document.createElement('source');
+        source.src = "/videos/hero-video.mp4";
+        source.type = "video/mp4";
+        video.appendChild(source);
+
+        // Styling
+        video.className = "object-cover w-full h-full";
+        video.style.width = "100%";
+        video.style.height = "100%";
+        video.style.objectFit = "cover";
+        video.style.display = "block";
+
+        // Clear container and append video
+        containerRef.current.innerHTML = '';
+        containerRef.current.appendChild(video);
+
+        // Attempt to play
+        const attemptPlay = () => {
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Fallback for strict mobile policies
+                    const forcePlay = () => {
+                        video.play();
+                        window.removeEventListener('touchstart', forcePlay);
+                        window.removeEventListener('click', forcePlay);
+                    };
+                    window.addEventListener('touchstart', forcePlay, { once: true });
+                    window.addEventListener('click', forcePlay, { once: true });
+                });
+            }
+        };
+
+        // Try playing immediately and on metadata load
+        attemptPlay();
+        video.addEventListener('loadedmetadata', attemptPlay);
+
+        return () => {
+            video.removeEventListener('loadedmetadata', attemptPlay);
+            if (containerRef.current) containerRef.current.innerHTML = '';
+        };
+    }, []);
+
     return (
         <section className="relative h-[100dvh] w-full overflow-hidden bg-black">
             {/* Video Background Container */}
-            <div className="absolute inset-0 w-full h-full">
-                <div
-                    className="w-full h-full"
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                        <video
-                            autoplay
-                            loop
-                            muted
-                            playsinline
-                            webkit-playsinline
-                            preload="auto"
-                            class="object-cover w-full h-full"
-                            style="width: 100%; height: 100%; object-fit: cover;"
-                        >
-                            <source src="/videos/hero-video.mp4" type="video/mp4">
-                        </video>
-                        <script>
-                            (function() {
-                                var video = document.querySelector('video');
-                                if (!video) return;
+            <div ref={containerRef} className="absolute inset-0 w-full h-full" />
 
-                                // Force muted state for autoplay compliance
-                                video.muted = true;
-                                video.defaultMuted = true;
-
-                                var hasPlayed = false;
-
-                                function attemptPlay() {
-                                    if (hasPlayed) return;
-                                    
-                                    var playPromise = video.play();
-                                    if (playPromise !== undefined) {
-                                        playPromise.then(function() {
-                                            hasPlayed = true;
-                                            console.log('Autoplay successful');
-                                        }).catch(function(err) {
-                                            console.log('Autoplay pending interaction');
-                                        });
-                                    }
-                                }
-
-                                // 1. Try immediately
-                                attemptPlay();
-
-                                // 2. Try on various load events
-                                video.addEventListener('loadstart', attemptPlay);
-                                video.addEventListener('loadedmetadata', attemptPlay);
-                                video.addEventListener('canplay', attemptPlay);
-                                video.addEventListener('canplaythrough', attemptPlay);
-
-                                // 3. Fallback: Play on any user interaction anywhere on the document
-                                var forcePlay = function() {
-                                    if (!hasPlayed) {
-                                        video.play().then(function() {
-                                            hasPlayed = true;
-                                        });
-                                    }
-                                    window.removeEventListener('touchstart', forcePlay);
-                                    window.removeEventListener('click', forcePlay);
-                                    window.removeEventListener('keydown', forcePlay);
-                                };
-
-                                window.addEventListener('touchstart', forcePlay, {passive: true});
-                                window.addEventListener('click', forcePlay, {passive: true});
-                                window.addEventListener('keydown', forcePlay, {passive: true});
-
-                                // 4. Final safety retry
-                                setTimeout(attemptPlay, 500);
-                                setTimeout(attemptPlay, 1500);
-                            })();
-                        </script>
-                    ` }}
-                />
-            </div>
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/40 z-10" />
 
