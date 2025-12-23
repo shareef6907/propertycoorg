@@ -1,57 +1,23 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 
 export default function Hero() {
-    const videoRef = useRef<HTMLVideoElement>(null);
-
-    useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
-
-        const attemptPlay = () => {
-            video.play().catch(() => {
-                // Still blocked, will try again on next interaction
-            });
-        };
-
-        // Try immediately
-        attemptPlay();
-
-        // Standard mobile fix: Play on first touch or click
-        const handleInteraction = () => {
-            attemptPlay();
-            window.removeEventListener("touchstart", handleInteraction);
-            window.removeEventListener("click", handleInteraction);
-        };
-
-        window.addEventListener("touchstart", handleInteraction);
-        window.addEventListener("click", handleInteraction);
-
-        return () => {
-            window.removeEventListener("touchstart", handleInteraction);
-            window.removeEventListener("click", handleInteraction);
-        };
-    }, []);
-
     return (
         <section className="relative h-[100dvh] w-full overflow-hidden">
             {/* Video Background */}
             <div className="absolute inset-0 w-full h-full bg-black">
                 <video
-                    ref={videoRef}
                     autoPlay
                     loop
                     muted
                     playsInline
                     preload="auto"
+                    src="/videos/hero-video.mp4"
                     className="object-cover w-full h-full"
-                >
-                    <source src="/videos/hero-video.mp4" type="video/mp4" />
-                </video>
+                />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-black/40 z-10" />
             </div>
@@ -106,6 +72,6 @@ export default function Hero() {
                 <span className="text-xs uppercase tracking-widest">Scroll to Explore</span>
                 <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
             </motion.div>
-        </section >
+        </section>
     );
 }
