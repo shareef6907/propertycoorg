@@ -6,12 +6,9 @@ import Link from "next/link";
 
 export default function Hero() {
     return (
-        <section className="relative h-[100dvh] w-full overflow-hidden">
-            {/* Video Background Container with Poster Image to prevent black screen */}
-            <div
-                className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: 'url("/gallery/1.jpeg")' }}
-            >
+        <section className="relative h-[100dvh] w-full overflow-hidden bg-black">
+            {/* Video Background Container */}
+            <div className="absolute inset-0 w-full h-full">
                 <div
                     className="w-full h-full"
                     dangerouslySetInnerHTML={{
@@ -22,7 +19,6 @@ export default function Hero() {
                             muted
                             playsinline
                             preload="auto"
-                            poster="/gallery/1.jpeg"
                             class="object-cover w-full h-full"
                             style="width: 100%; height: 100%; object-fit: cover;"
                         >
@@ -32,15 +28,17 @@ export default function Hero() {
                             (function() {
                                 var video = document.querySelector('video');
                                 if (video) {
-                                    video.play().catch(function() {
-                                        // Fallback for mobile
+                                    video.muted = true;
+                                    video.play().catch(function(err) {
+                                        console.log('Autoplay blocked:', err);
+                                        // Fallback for mobile interaction
                                         var playOnInteraction = function() {
                                             video.play();
                                             window.removeEventListener('touchstart', playOnInteraction);
                                             window.removeEventListener('click', playOnInteraction);
                                         };
-                                        window.addEventListener('touchstart', playOnInteraction);
-                                        window.addEventListener('click', playOnInteraction);
+                                        window.addEventListener('touchstart', playOnInteraction, {passive: true});
+                                        window.addEventListener('click', playOnInteraction, {passive: true});
                                     });
                                 }
                             })();
