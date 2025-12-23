@@ -9,11 +9,20 @@ export default function Hero() {
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.play().catch(() => {
-                // Autoplay might be blocked by browser settings or Low Power Mode
-            });
-        }
+        const video = videoRef.current;
+        if (!video) return;
+
+        // Initial attempt to play
+        video.play().catch(() => {
+            // If autoplay fails, wait for first user interaction
+            const startVideo = () => {
+                video.play();
+                window.removeEventListener("touchstart", startVideo);
+                window.removeEventListener("click", startVideo);
+            };
+            window.addEventListener("touchstart", startVideo);
+            window.addEventListener("click", startVideo);
+        });
     }, []);
 
     return (
