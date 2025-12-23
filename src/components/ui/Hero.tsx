@@ -9,20 +9,12 @@ export default function Hero() {
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
-
-        // Initial attempt to play
-        video.play().catch(() => {
-            // If autoplay fails, wait for first user interaction
-            const startVideo = () => {
-                video.play();
-                window.removeEventListener("touchstart", startVideo);
-                window.removeEventListener("click", startVideo);
-            };
-            window.addEventListener("touchstart", startVideo);
-            window.addEventListener("click", startVideo);
-        });
+        if (videoRef.current) {
+            videoRef.current.muted = true;
+            videoRef.current.play().catch(() => {
+                // Native autoplay fallback
+            });
+        }
     }, []);
 
     return (
@@ -94,6 +86,6 @@ export default function Hero() {
                 <span className="text-xs uppercase tracking-widest">Scroll to Explore</span>
                 <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
             </motion.div>
-        </section>
+        </section >
     );
 }
