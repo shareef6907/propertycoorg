@@ -3,77 +3,25 @@
 import { motion } from "framer-motion";
 import { MapPin, Phone } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 
 export default function Hero() {
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (!containerRef.current) return;
-
-        // Create video element manually to bypass React hydration issues
-        const video = document.createElement('video');
-
-        // Set all necessary attributes for mobile autoplay
-        video.autoplay = true;
-        video.loop = true;
-        video.muted = true;
-        video.playsInline = true;
-        video.setAttribute('muted', '');
-        video.setAttribute('playsinline', '');
-        video.setAttribute('webkit-playsinline', '');
-        video.setAttribute('preload', 'auto');
-
-        const source = document.createElement('source');
-        source.src = "/videos/hero-video.mp4";
-        source.type = "video/mp4";
-        video.appendChild(source);
-
-        // Styling
-        video.className = "object-cover w-full h-full";
-        video.style.width = "100%";
-        video.style.height = "100%";
-        video.style.objectFit = "cover";
-        video.style.display = "block";
-
-        // Clear container and append video
-        containerRef.current.innerHTML = '';
-        containerRef.current.appendChild(video);
-
-        // Attempt to play
-        const attemptPlay = () => {
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(() => {
-                    // Fallback for strict mobile policies
-                    const forcePlay = () => {
-                        video.play();
-                        window.removeEventListener('touchstart', forcePlay);
-                        window.removeEventListener('click', forcePlay);
-                    };
-                    window.addEventListener('touchstart', forcePlay, { once: true });
-                    window.addEventListener('click', forcePlay, { once: true });
-                });
-            }
-        };
-
-        // Try playing immediately and on metadata load
-        attemptPlay();
-        video.addEventListener('loadedmetadata', attemptPlay);
-
-        return () => {
-            video.removeEventListener('loadedmetadata', attemptPlay);
-            if (containerRef.current) containerRef.current.innerHTML = '';
-        };
-    }, []);
-
     return (
         <section className="relative h-[100dvh] w-full overflow-hidden bg-black">
-            {/* Video Background Container */}
-            <div ref={containerRef} className="absolute inset-0 w-full h-full" />
-
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/40 z-10" />
+            {/* Video Background */}
+            <div className="absolute inset-0 w-full h-full">
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    className="object-cover w-full h-full"
+                >
+                    <source src="/videos/hero-video.mp4" type="video/mp4" />
+                </video>
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/40 z-10" />
+            </div>
 
             {/* Content */}
             <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center text-white">
