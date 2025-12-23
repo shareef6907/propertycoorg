@@ -30,48 +30,54 @@ export default function Hero() {
                                 var video = document.querySelector('video');
                                 if (!video) return;
 
-                                // Ensure muted for autoplay
+                                // Force muted state for autoplay compliance
                                 video.muted = true;
                                 video.defaultMuted = true;
 
+                                var hasPlayed = false;
+
                                 function attemptPlay() {
+                                    if (hasPlayed) return;
+                                    
                                     var playPromise = video.play();
                                     if (playPromise !== undefined) {
                                         playPromise.then(function() {
-                                            console.log('Autoplay started');
+                                            hasPlayed = true;
+                                            console.log('Autoplay successful');
                                         }).catch(function(err) {
-                                            console.log('Autoplay blocked, waiting for interaction');
-                                            
-                                            // Fallback for mobile interaction
-                                            var playOnInteraction = function() {
-                                                video.play();
-                                                window.removeEventListener('touchstart', playOnInteraction);
-                                                window.removeEventListener('click', playOnInteraction);
-                                                window.removeEventListener('scroll', playOnInteraction);
-                                            };
-                                            window.addEventListener('touchstart', playOnInteraction, {passive: true});
-                                            window.addEventListener('click', playOnInteraction, {passive: true});
-                                            window.addEventListener('scroll', playOnInteraction, {passive: true});
+                                            console.log('Autoplay pending interaction');
                                         });
                                     }
                                 }
 
-                                // Try immediately
+                                // 1. Try immediately
                                 attemptPlay();
 
-                                // Try when metadata is loaded
+                                // 2. Try on various load events
+                                video.addEventListener('loadstart', attemptPlay);
                                 video.addEventListener('loadedmetadata', attemptPlay);
                                 video.addEventListener('canplay', attemptPlay);
+                                video.addEventListener('canplaythrough', attemptPlay);
 
-                                // Resume on visibility change
-                                document.addEventListener('visibilitychange', function() {
-                                    if (document.visibilityState === 'visible') {
-                                        attemptPlay();
+                                // 3. Fallback: Play on any user interaction anywhere on the document
+                                var forcePlay = function() {
+                                    if (!hasPlayed) {
+                                        video.play().then(function() {
+                                            hasPlayed = true;
+                                        });
                                     }
-                                });
+                                    window.removeEventListener('touchstart', forcePlay);
+                                    window.removeEventListener('click', forcePlay);
+                                    window.removeEventListener('keydown', forcePlay);
+                                };
 
-                                // Final retry after a short delay
-                                setTimeout(attemptPlay, 1000);
+                                window.addEventListener('touchstart', forcePlay, {passive: true});
+                                window.addEventListener('click', forcePlay, {passive: true});
+                                window.addEventListener('keydown', forcePlay, {passive: true});
+
+                                // 4. Final safety retry
+                                setTimeout(attemptPlay, 500);
+                                setTimeout(attemptPlay, 1500);
                             })();
                         </script>
                     ` }}
