@@ -3,66 +3,50 @@
 import { motion } from "framer-motion";
 import { MapPin, Phone } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 
 export default function Hero() {
-    const videoRef = useRef<HTMLVideoElement>(null);
-
-    useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
-
-        // Ensure video is muted and playsinline for mobile autoplay
-        video.muted = true;
-        video.setAttribute('muted', '');
-        video.setAttribute('playsinline', '');
-
-        const attemptPlay = () => {
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.catch((error) => {
-                    console.log("Autoplay prevented, waiting for interaction:", error);
-                });
-            }
-        };
-
-        // Try playing immediately
-        attemptPlay();
-
-        // Try playing when data is loaded
-        video.addEventListener('loadeddata', attemptPlay);
-
-        // Fallback for mobile interaction
-        const forcePlay = () => {
-            attemptPlay();
-        };
-
-        window.addEventListener('touchstart', forcePlay, { once: true });
-        window.addEventListener('click', forcePlay, { once: true });
-
-        return () => {
-            video.removeEventListener('loadeddata', attemptPlay);
-            window.removeEventListener('touchstart', forcePlay);
-            window.removeEventListener('click', forcePlay);
-        };
-    }, []);
-
     return (
         <section className="relative h-[100dvh] w-full overflow-hidden">
-            {/* Video Background */}
-            <div className="absolute inset-0 w-full h-full bg-black">
-                <video
-                    ref={videoRef}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    className="object-cover w-full h-full"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                >
-                    <source src="/videos/hero-video.mp4" type="video/mp4" />
-                </video>
+            {/* Video Background Container with Poster Image to prevent black screen */}
+            <div
+                className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: 'url("/gallery/1.jpeg")' }}
+            >
+                <div
+                    className="w-full h-full"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                        <video
+                            autoplay
+                            loop
+                            muted
+                            playsinline
+                            preload="auto"
+                            poster="/gallery/1.jpeg"
+                            class="object-cover w-full h-full"
+                            style="width: 100%; height: 100%; object-fit: cover;"
+                        >
+                            <source src="/videos/hero-video.mp4" type="video/mp4">
+                        </video>
+                        <script>
+                            (function() {
+                                var video = document.querySelector('video');
+                                if (video) {
+                                    video.play().catch(function() {
+                                        // Fallback for mobile
+                                        var playOnInteraction = function() {
+                                            video.play();
+                                            window.removeEventListener('touchstart', playOnInteraction);
+                                            window.removeEventListener('click', playOnInteraction);
+                                        };
+                                        window.addEventListener('touchstart', playOnInteraction);
+                                        window.addEventListener('click', playOnInteraction);
+                                    });
+                                }
+                            })();
+                        </script>
+                    ` }}
+                />
             </div>
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/40 z-10" />
