@@ -9,12 +9,32 @@ export default function Hero() {
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.muted = true;
-            videoRef.current.play().catch(() => {
-                // Native autoplay fallback
+        const video = videoRef.current;
+        if (!video) return;
+
+        const attemptPlay = () => {
+            video.play().catch(() => {
+                // Still blocked, will try again on next interaction
             });
-        }
+        };
+
+        // Try immediately
+        attemptPlay();
+
+        // Standard mobile fix: Play on first touch or click
+        const handleInteraction = () => {
+            attemptPlay();
+            window.removeEventListener("touchstart", handleInteraction);
+            window.removeEventListener("click", handleInteraction);
+        };
+
+        window.addEventListener("touchstart", handleInteraction);
+        window.addEventListener("click", handleInteraction);
+
+        return () => {
+            window.removeEventListener("touchstart", handleInteraction);
+            window.removeEventListener("click", handleInteraction);
+        };
     }, []);
 
     return (
