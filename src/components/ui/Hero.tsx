@@ -3,24 +3,52 @@
 import { motion } from "framer-motion";
 import { MapPin, Phone } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 export default function Hero() {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        // Force play on any interaction as a fallback
+        const forcePlay = () => {
+            const video = containerRef.current?.querySelector('video');
+            if (video) {
+                video.play().catch(() => { });
+            }
+        };
+
+        window.addEventListener('touchstart', forcePlay, { once: true });
+        window.addEventListener('click', forcePlay, { once: true });
+
+        return () => {
+            window.removeEventListener('touchstart', forcePlay);
+            window.removeEventListener('click', forcePlay);
+        };
+    }, []);
+
     return (
         <section className="relative h-[100dvh] w-full overflow-hidden">
             {/* Video Background */}
-            <div className="absolute inset-0 w-full h-full bg-black">
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    src="/videos/hero-video.mp4"
-                    className="object-cover w-full h-full"
-                />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/40 z-10" />
-            </div>
+            <div
+                ref={containerRef}
+                className="absolute inset-0 w-full h-full bg-black"
+                dangerouslySetInnerHTML={{
+                    __html: `
+                    <video
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="auto"
+                        class="object-cover w-full h-full"
+                        style="width: 100%; height: 100%; object-fit: cover;"
+                    >
+                        <source src="/videos/hero-video.mp4" type="video/mp4">
+                    </video>
+                ` }}
+            />
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/40 z-10" />
 
             {/* Content */}
             <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center text-white">
