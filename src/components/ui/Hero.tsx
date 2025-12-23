@@ -18,6 +18,7 @@ export default function Hero() {
                             loop
                             muted
                             playsinline
+                            webkit-playsinline
                             preload="auto"
                             class="object-cover w-full h-full"
                             style="width: 100%; height: 100%; object-fit: cover;"
@@ -27,20 +28,50 @@ export default function Hero() {
                         <script>
                             (function() {
                                 var video = document.querySelector('video');
-                                if (video) {
-                                    video.muted = true;
-                                    video.play().catch(function(err) {
-                                        console.log('Autoplay blocked:', err);
-                                        // Fallback for mobile interaction
-                                        var playOnInteraction = function() {
-                                            video.play();
-                                            window.removeEventListener('touchstart', playOnInteraction);
-                                            window.removeEventListener('click', playOnInteraction);
-                                        };
-                                        window.addEventListener('touchstart', playOnInteraction, {passive: true});
-                                        window.addEventListener('click', playOnInteraction, {passive: true});
-                                    });
+                                if (!video) return;
+
+                                // Ensure muted for autoplay
+                                video.muted = true;
+                                video.defaultMuted = true;
+
+                                function attemptPlay() {
+                                    var playPromise = video.play();
+                                    if (playPromise !== undefined) {
+                                        playPromise.then(function() {
+                                            console.log('Autoplay started');
+                                        }).catch(function(err) {
+                                            console.log('Autoplay blocked, waiting for interaction');
+                                            
+                                            // Fallback for mobile interaction
+                                            var playOnInteraction = function() {
+                                                video.play();
+                                                window.removeEventListener('touchstart', playOnInteraction);
+                                                window.removeEventListener('click', playOnInteraction);
+                                                window.removeEventListener('scroll', playOnInteraction);
+                                            };
+                                            window.addEventListener('touchstart', playOnInteraction, {passive: true});
+                                            window.addEventListener('click', playOnInteraction, {passive: true});
+                                            window.addEventListener('scroll', playOnInteraction, {passive: true});
+                                        });
+                                    }
                                 }
+
+                                // Try immediately
+                                attemptPlay();
+
+                                // Try when metadata is loaded
+                                video.addEventListener('loadedmetadata', attemptPlay);
+                                video.addEventListener('canplay', attemptPlay);
+
+                                // Resume on visibility change
+                                document.addEventListener('visibilitychange', function() {
+                                    if (document.visibilityState === 'visible') {
+                                        attemptPlay();
+                                    }
+                                });
+
+                                // Final retry after a short delay
+                                setTimeout(attemptPlay, 1000);
                             })();
                         </script>
                     ` }}
