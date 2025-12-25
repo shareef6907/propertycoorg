@@ -13,8 +13,8 @@ const stats = [
     },
     {
         label: "Price",
-        value: "8.0",
-        unit: "Crores",
+        value: "2",
+        unit: "Lakhs/Cent",
         icon: IndianRupee,
         delay: 0.2,
     },

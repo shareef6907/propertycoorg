@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://propertycoorg.com'),
   title: "Property for Sale in Coorg, India | 3.86 Acre Resort Land Near Madikeri",
-  description: "Premium 3.86-acre land for sale in Coorg, Karnataka, India. Ideal for resort development, wedding venue & commercial investment. Near Madikeri. Convertible to commercial. ₹8 Crores. Contact: +973 3300 7030",
+  description: "Premium 3.86-acre land for sale in Coorg, Karnataka, India. Ideal for resort development, wedding venue & commercial investment. Near Madikeri. Convertible to commercial. ₹2 Lakhs per Cent. Contact: +973 3300 7030",
   keywords: [
     "property for sale in india",
     "land for sale in india",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     url: "https://propertycoorg.com",
     siteName: "PropertyCoorg",
     title: "3.86 Acre Property for Sale in Coorg | Resort & Investment Land Near Madikeri",
-    description: "Premium land for sale in Coorg, Napokulu. Perfect for resort, wedding venue & commercial development. 3.86 acres near Madikeri. ₹8 Crores.",
+    description: "Premium land for sale in Coorg, Napokulu. Perfect for resort, wedding venue & commercial development. 3.86 acres near Madikeri. ₹2 Lakhs per Cent.",
     images: [
       {
         url: "/gallery/1.jpeg",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "3.86 Acre Property for Sale in Coorg | Resort Land Near Madikeri",
-    description: "Premium land for sale in Coorg. Ideal for resort & wedding venue. 3.86 acres in Napokulu, Kodagu. ₹8 Crores.",
+    description: "Premium land for sale in Coorg. Ideal for resort & wedding venue. 3.86 acres in Napokulu, Kodagu. ₹2 Lakhs per Cent.",
     images: ["/gallery/1.jpeg"],
   },
   alternates: {

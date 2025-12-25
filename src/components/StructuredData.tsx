@@ -5,7 +5,7 @@ export default function StructuredData() {
         "@context": "https://schema.org",
         "@type": "RealEstateListing",
         "name": "3.86 Acre Property for Sale in Coorg, Karnataka, India",
-        "description": "Premium 3.86-acre land for sale in Coorg, Karnataka, India. Ideal for resort development, wedding venue & commercial investment. Near Madikeri. Convertible to commercial.",
+        "description": "Premium 3.86-acre land for sale in Coorg, Karnataka, India. Ideal for resort development, wedding venue & commercial investment. Near Madikeri. Convertible to commercial. ₹2 Lakhs per Cent.",
         "url": "https://propertycoorg.com",
         "image": [
             "https://propertycoorg.com/gallery/1.jpeg",
@@ -14,7 +14,7 @@ export default function StructuredData() {
         ],
         "offers": {
             "@type": "Offer",
-            "price": "80000000",
+            "price": "77200000",
             "priceCurrency": "INR",
             "availability": "https://schema.org/InStock",
             "priceValidUntil": "2025-12-31"
